@@ -2,6 +2,7 @@ import { ADD_COUNTRIES, SET_ERROR, SET_LOADING } from "./countriesActions";
 
 const initialState = {
   list: [],
+  country: null,
   isLoading: false,
   isError: null,
 };

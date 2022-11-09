@@ -7,7 +7,7 @@ import {
   setSearchString,
 } from "../../store/filters/filterActions";
 import { useSelector } from "react-redux";
-import { getSelectValue } from "../../store/filters/filterSelectors";
+import { getRegion } from "../../store/filters/filterSelectors";
 
 const optionsMap = {
   Africa: { value: "Africa", label: "Africa" },
@@ -20,7 +20,7 @@ const options = Object.values(optionsMap);
 
 const Controls = () => {
   const dispatch = useDispatch();
-  const filterValue = useSelector(getSelectValue);
+  const filterValue = useSelector(getRegion);
 
   const onSelectChangeHenpler = (evt) => {
     if (evt === null) {

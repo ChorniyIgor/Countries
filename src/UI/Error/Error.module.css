@@ -1,0 +1,14 @@
+.ErrorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.ErrorContainer h3 {
+  color: var(--colors-text);
+  font-size: var(--fs-lm);
+  cursor: pointer;
+  font-weight: 400;
+}

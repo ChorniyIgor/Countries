@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toggleThemeMode } from "../../store/theme/themeActions";
 import styles from "./Header.module.css";
+import { clearFilters } from "../../store/filters/filterActions";
 
 export const Header = () => {
   const { theme } = useSelector((store) => store.theme);
@@ -13,6 +14,10 @@ export const Header = () => {
 
   const onModeSwitcherClickHandler = () => {
     dispatch(toggleThemeMode);
+  };
+
+  const onTitleClickhandler = () => {
+    dispatch(clearFilters);
   };
 
   useEffect(() => {
@@ -23,7 +28,7 @@ export const Header = () => {
     <header className={styles.HeaderEl}>
       <Container>
         <div className={styles.Wrapper}>
-          <Link to="/" className={styles.Title}>
+          <Link to="/" className={styles.Title} onClick={onTitleClickhandler}>
             Where is the world?
           </Link>
           <div

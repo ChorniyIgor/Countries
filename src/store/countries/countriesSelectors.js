@@ -1,26 +1,30 @@
 export const getAllCountries = (state) => state.countries.list;
 
-export const getFiltratedCountries = (selectValue, searchString) => (state) => {
-  let filtrated = [...state.countries.list];
+export const getFiltratedCountries =
+  ({ search, region }) =>
+  (state) => {
+    let filtrated = [...state.countries.list];
 
-  if (selectValue !== "") {
-    filtrated = filtrated.filter((country) => {
-      return country.region === selectValue.label;
-    });
-  }
+    if (region !== "") {
+      filtrated = filtrated.filter((country) => {
+        return country.region === region.label;
+      });
+    }
 
-  const search = searchString.toLowerCase().trim();
+    const searchStr = search.toLowerCase().trim();
 
-  if (search !== "") {
-    filtrated = filtrated.filter((country) =>
-      country.name.toLowerCase().includes(search)
-    );
-  }
+    if (searchStr !== "") {
+      filtrated = filtrated.filter((country) =>
+        country.name.toLowerCase().includes(searchStr)
+      );
+    }
 
-  return filtrated;
-};
+    return filtrated;
+  };
 
 export const getCountriesLoadStatus = (state) => ({
   isLoading: state.countries.isLoading,
   isError: state.countries.isError,
 });
+
+export const getCountryInfo = (state) => state.countries.country;

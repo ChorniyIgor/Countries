@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import BorderCountries from "./BorderCountries/BorderCountries";
+
 import styles from "./Info.module.css";
 
 const Info = (props) => {
@@ -13,13 +14,13 @@ const Info = (props) => {
     topLevelDomain,
     currencies = [],
     languages = [],
-    borders = [],
+    // borders = [],
     push,
   } = props;
 
   return (
     <section className={styles.Wrapper}>
-      <image src={flag} alt={name} className={styled.InfoImage} />
+      <img src={flag} alt={name} className={styles.InfoImage} />
 
       <div>
         <h1 className={styles.InfoTitle}>{name}</h1>
@@ -63,24 +64,7 @@ const Info = (props) => {
             </li>
           </ul>
         </div>
-        <div className={styles.Meta}>
-          <b>Border Countries</b>
-          {!borders.length ? (
-            <span>There is no border countries</span>
-          ) : (
-            <div className={styles.TagGroup}>
-              {[].map((b) => (
-                <span
-                  className={styled.Tag}
-                  key={b}
-                  onClick={() => push(`/country/${b}`)}
-                >
-                  {b}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+        <BorderCountries push={push} countryName={name} />
       </div>
     </section>
   );

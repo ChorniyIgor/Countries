@@ -5,31 +5,33 @@ import Card from "../components/Card/Card";
 import Controls from "../components/Controls/Controls";
 import { useSelector } from "react-redux";
 import {
-  getAllCountries,
   getCountriesLoadStatus,
   getFiltratedCountries,
 } from "../store/countries/countriesSelectors";
 import Loader from "../UI/Loader/Loader";
-import {
-  getSearchString,
-  getSelectValue,
-} from "../store/filters/filterSelectors";
+import Error from "../UI/Error/Error";
+import { getSearchString, getRegion } from "../store/filters/filterSelectors";
 
 export const HomePage = () => {
   const navigate = useNavigate();
 
   const { isLoading, isError } = useSelector(getCountriesLoadStatus);
-  const selectValue = useSelector(getSelectValue);
-  const searchString = useSelector(getSearchString);
+  const region = useSelector(getRegion);
+  const search = useSelector(getSearchString);
 
   const countries = useSelector(
-    getFiltratedCountries(selectValue, searchString)
+    getFiltratedCountries({
+      search,
+      region,
+    })
   );
   return (
     <>
       <Controls />
       {isLoading && <Loader />}
-      {isError && <p>{isError.message}</p>}
+      {isError && <Error>{isError.message}</Error>}
+      {countries.length === 0 && <Error>There is no countries ... </Error>}
+
       {countries.length !== 0 && (
         <CountriesList>
           {countries.map((c) => {
