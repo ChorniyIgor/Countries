@@ -7,7 +7,10 @@ import {
   setSearchString,
 } from "../../store/filters/filterActions";
 import { useSelector } from "react-redux";
-import { getRegion } from "../../store/filters/filterSelectors";
+import {
+  getRegion,
+  getSearchString,
+} from "../../store/filters/filterSelectors";
 
 const optionsMap = {
   Africa: { value: "Africa", label: "Africa" },
@@ -20,7 +23,8 @@ const options = Object.values(optionsMap);
 
 const Controls = () => {
   const dispatch = useDispatch();
-  const filterValue = useSelector(getRegion);
+  const region = useSelector(getRegion);
+  const search = useSelector(getSearchString);
 
   const onSelectChangeHenpler = (evt) => {
     if (evt === null) {
@@ -36,13 +40,13 @@ const Controls = () => {
 
   return (
     <div className={styles.Wrapper}>
-      <Search setSearch={onSearchChangeHandler} />
+      <Search setSearch={onSearchChangeHandler} search={search} />
       <Select
         options={options}
         placeholder="Filter by Region"
         isClearable={true}
         isSearchable={false}
-        value={filterValue}
+        value={region}
         onChange={onSelectChangeHenpler}
       />
     </div>

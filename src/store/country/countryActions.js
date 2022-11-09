@@ -42,10 +42,8 @@ export const loadBorderCountries =
       dispatch(addBorderCountries([]));
     } else {
       dispatch(setLoadingBorderCountries);
-      console.log("2222");
       client(api.filterByCode(borderCountryCodes))
         .then(({ data }) => {
-          console.log(data.map((country) => country.name));
           dispatch(addBorderCountries(data.map((country) => country.name)));
         })
         .catch((error) => console.log(error));
@@ -65,7 +63,6 @@ export const loadCountry =
     client(api.searchByCountry(country))
       .then(({ data }) => {
         dispatch(addCountry(data[0]));
-        console.log(data[0].borders);
         dispatch(loadBorderCountries(data[0].borders));
       })
       .catch((error) => dispatch(setError(error)));

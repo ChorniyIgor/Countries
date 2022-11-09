@@ -4,9 +4,19 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import thunk from "redux-thunk";
 import axios from "axios";
 import * as api from "../config";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-export const store = createStore(
-  rootReducer,
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["theme"],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(
+  persistedReducer,
   composeWithDevTools(
     applyMiddleware(
       thunk.withExtraArgument({
@@ -16,3 +26,7 @@ export const store = createStore(
     )
   )
 );
+
+const persistor = persistStore(store);
+
+export { store, persistor };
