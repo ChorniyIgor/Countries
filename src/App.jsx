@@ -1,17 +1,22 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Header } from "./components/Header";
-import { Main } from "./components/Main";
+import { Header } from "./components/Header/Header";
+import Main from "./components/Main/Main";
 
 import { HomePage } from "./pages/HomePage";
 import { Details } from "./pages/Details";
 import { NotFound } from "./pages/NotFound";
-import { Provider } from "react-redux";
-import { store } from "./store/index";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { loadCountries } from "./store/countries/countriesActions";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadCountries());
+  }, [dispatch]);
   return (
-    <Provider store={store}>
+    <>
       <Header />
       <Main>
         <Routes>
@@ -20,8 +25,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Main>
-    </Provider>
+    </>
   );
-}
+};
 
 export default App;

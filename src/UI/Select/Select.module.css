@@ -1,0 +1,22 @@
+.Select {
+  width: 200px;
+  border-radius: var(--radii);
+  font-family: var(--family);
+  border: none;
+}
+
+.Select > * {
+  box-shadow: var(--shadow);
+}
+
+.Select input {
+  padding-left: 0.25rem;
+}
+
+.Select * {
+  color: var(--colors-text) !important;
+}
+
+.Select > div[id] {
+  background-color: var(--colors-ui-base);
+}

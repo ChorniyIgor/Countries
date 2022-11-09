@@ -1,0 +1,25 @@
+.HeaderEl {
+  box-shadow: var(--shadow);
+  background-color: var(--colors-ui-base);
+}
+
+.Wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.Title {
+  color: var(--colors-text);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+}
+
+.ModeSwitcher {
+  color: var(--colors-text);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  text-transform: capitalize;
+}
