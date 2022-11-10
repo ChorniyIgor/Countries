@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 
 import Button from "../UI/Button/Button";
-import Info from "../components/Info/Info";
+import FullCountryInfo from "../components/FullCountryInfo/FullCountryInfo";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -14,7 +14,7 @@ import { loadCountry } from "../store/country/countryActions";
 import Loader from "../UI/Loader/Loader";
 import Error from "../UI/Error/Error";
 
-export const Details = () => {
+const SingleCountryPage = () => {
   const { name } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,7 +37,11 @@ export const Details = () => {
       </Button>
       {isError && <Error>{isError.message}</Error>}
       {isLoading && <Loader />}
-      {currentCountry && <Info push={navigate} {...currentCountry} />}
+      {!isLoading && currentCountry && (
+        <FullCountryInfo push={navigate} {...currentCountry} />
+      )}
     </div>
   );
 };
+
+export default SingleCountryPage;

@@ -1,4 +1,4 @@
-import Search from "../Search/Search";
+import Search from "../../UI/Search/Search";
 import Select from "../../UI/Select/Select";
 import styles from "./Controls.module.css";
 import { useDispatch } from "react-redux";

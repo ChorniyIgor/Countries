@@ -1,8 +1,8 @@
 import BorderCountries from "./BorderCountries/BorderCountries";
 
-import styles from "./Info.module.css";
+import styles from "./FullCountryInfo.module.css";
 
-const Info = (props) => {
+const FullCountryInfo = (props) => {
   const {
     name,
     nativeName,
@@ -14,7 +14,6 @@ const Info = (props) => {
     topLevelDomain,
     currencies = [],
     languages = [],
-    // borders = [],
     push,
   } = props;
 
@@ -70,4 +69,4 @@ const Info = (props) => {
   );
 };
 
-export default Info;
+export default FullCountryInfo;

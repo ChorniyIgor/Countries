@@ -4,8 +4,8 @@ import { Header } from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
 import { HomePage } from "./pages/HomePage";
-import { Details } from "./pages/Details";
-import { NotFound } from "./pages/NotFound";
+import SingleCountryPage from "./pages/SingleCountryPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { loadCountries } from "./store/countries/countriesActions";
@@ -21,8 +21,8 @@ const App = () => {
       <Main>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/country/:name" element={<Details />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/country/:name" element={<SingleCountryPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Main>
     </>

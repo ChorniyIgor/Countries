@@ -13,6 +13,10 @@
   animation: spinner-zp9dbg 1s infinite linear;
 }
 
+body[data-theme="dark"] .Loader {
+  background: conic-gradient(#0000 10%, #e7e7ee);
+}
+
 @keyframes spinner-zp9dbg {
   to {
     transform: rotate(1turn);

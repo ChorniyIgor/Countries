@@ -2,6 +2,7 @@ export const ADD_COUNTRY = "@@country/ADD_COUNTRY";
 export const ADD_BORDER_COUNTRIES = "@@country/ADD_BORDER_COUNTRIES";
 export const RESET_BORDER_COUNTRIES = "@@country/RESET_BORDER_COUNTRIES";
 export const SET_LOADING = "@@country/SET_LOADING";
+export const SET_LOADING_COMPLEATED = "@@country/SET_LOADING_COMPLEATED";
 export const SET_ERROR = "@@country/SET_ERROR";
 export const SET_LOADING_BORDER_COUNTRIES =
   "@@country/SET_LOADING_BORDER_COUNTRIES";
@@ -22,6 +23,10 @@ const setLoading = {
   type: SET_LOADING,
 };
 
+const setLoadingComplite = {
+  type: SET_LOADING_COMPLEATED,
+};
+
 const setLoadingBorderCountries = {
   type: SET_LOADING_BORDER_COUNTRIES,
 };
@@ -40,11 +45,13 @@ export const loadBorderCountries =
   (dispatch, _, { client, api }) => {
     if (borderCountryCodes === undefined) {
       dispatch(addBorderCountries([]));
+      dispatch(setLoadingComplite);
     } else {
       dispatch(setLoadingBorderCountries);
       client(api.filterByCode(borderCountryCodes))
         .then(({ data }) => {
           dispatch(addBorderCountries(data.map((country) => country.name)));
+          dispatch(setLoadingComplite);
         })
         .catch((error) => console.log(error));
     }

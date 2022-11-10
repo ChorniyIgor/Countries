@@ -5,6 +5,7 @@ import {
   SET_ERROR,
   SET_LOADING,
   SET_LOADING_BORDER_COUNTRIES,
+  SET_LOADING_COMPLEATED,
 } from "./countryActions";
 
 const initialState = {
@@ -24,7 +25,6 @@ export const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         countryInfo: action.payload,
-        isLoading: false,
         isError: null,
       };
 
@@ -42,6 +42,9 @@ export const countryReducer = (state = initialState, action) => {
 
     case SET_LOADING:
       return { ...state, countryInfo: null, isLoading: true };
+
+    case SET_LOADING_COMPLEATED:
+      return { ...state, isLoading: false };
 
     case SET_LOADING_BORDER_COUNTRIES:
       return {

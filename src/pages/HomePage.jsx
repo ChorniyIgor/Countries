@@ -25,39 +25,44 @@ export const HomePage = () => {
       region,
     })
   );
+
+  const generateInfo = (country) => [
+    {
+      title: "Population",
+      description: country.population.toLocaleString(),
+    },
+    {
+      title: "Region",
+      description: country.region,
+    },
+    {
+      title: "Capital",
+      description: country.capital,
+    },
+  ];
+
   return (
     <>
       <Controls />
-      {isLoading && <Loader />}
-      {isError && <Error>{isError.message}</Error>}
-      {countries.length === 0 && <Error>There is no countries ... </Error>}
+      {isLoading ? <Loader /> : null}
+      {isError ? <Error>{isError.message}</Error> : null}
+      {!isLoading && countries.length === 0 ? (
+        <Error>There is no countries ... </Error>
+      ) : null}
 
       {countries.length !== 0 && (
         <CountriesList>
-          {countries.map((c) => {
+          {countries.map((country) => {
             const countryInfo = {
-              img: c.flags.png,
-              name: c.name,
-              info: [
-                {
-                  title: "Population",
-                  description: c.population.toLocaleString(),
-                },
-                {
-                  title: "Region",
-                  description: c.region,
-                },
-                {
-                  title: "Capital",
-                  description: c.capital,
-                },
-              ],
+              img: country.flags.png,
+              name: country.name,
+              info: generateInfo(country),
             };
 
             return (
               <Card
-                key={c.name}
-                onClick={() => navigate(`/country/${c.name}`)}
+                key={country.name}
+                onClick={() => navigate(`/country/${country.name}`)}
                 {...countryInfo}
               />
             );
