@@ -28,7 +28,7 @@ const BorderCountries = ({ push }) => {
                 <span
                   className={styles.Tag}
                   key={b}
-                  onClick={() => push(`/country/${b}`)}
+                  onClick={() => push(`/Countries/country/${b}`)}
                 >
                   {b}
                 </span>

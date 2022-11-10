@@ -20,8 +20,11 @@ const App = () => {
       <Header />
       <Main>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/country/:name" element={<SingleCountryPage />} />
+          <Route exact path="/Countries/" element={<HomePage />} />
+          <Route
+            path="/Countries/country/:name"
+            element={<SingleCountryPage />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Main>

@@ -28,7 +28,11 @@ export const Header = () => {
     <header className={styles.HeaderEl}>
       <Container>
         <div className={styles.Wrapper}>
-          <Link to="/" className={styles.Title} onClick={onTitleClickhandler}>
+          <Link
+            to="/Countries/"
+            className={styles.Title}
+            onClick={onTitleClickhandler}
+          >
             Where is the world?
           </Link>
           <div
