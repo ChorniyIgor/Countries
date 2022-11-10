@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Job-listings-with-filtering/static/css/main.6ec5318b.css",
+    "main.js": "/Job-listings-with-filtering/static/js/main.d486f850.js",
+    "index.html": "/Job-listings-with-filtering/index.html",
+    "main.6ec5318b.css.map": "/Job-listings-with-filtering/static/css/main.6ec5318b.css.map",
+    "main.d486f850.js.map": "/Job-listings-with-filtering/static/js/main.d486f850.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ec5318b.css",
+    "static/js/main.d486f850.js"
+  ]
+}
